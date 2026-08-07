@@ -1,5 +1,5 @@
-# Templatka Hat'ów ChainBus
-
+# MMS3 Hat Air Quality
+![punkt 1](Hat_picture.png)
 
 ## Sekcja 0: Jak szybko, dobrze i tanio zrobić hata z dokumentacją
 
