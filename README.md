@@ -1,107 +1,72 @@
 # MMS3 Hat Air Quality
 ![punkt 1](Hat_picture.png)
 
-## Sekcja 0: Jak szybko, dobrze i tanio zrobić hata z dokumentacją
-
-Szybka lista punkcików to wyklepania zanim hat magicznie się zrobi
-
-1. **Sprawdź istniejące projekty:** Zobacz czy nie ma już jakiegoś hata który robi co potrzebujesz. Zobacz w forkach i poszukaj na githubie po hashtag'ach, jeśli nie to
-2. **Utwórz Fork:** Kliknij przycisk **Fork** w prawym górnym rogu tego repozytorium.
-
-![punkt 1](readme_zdjecia/fork.png)
-
-1. **Konfiguracja repozytorium:** Daj mu adekwatną nazwe, i z'clone'uj forka do siebie na pc
-2. **Zasady projektowania:**
-   * Dokładniejsza dokumentacja znajduje się w Sekcji 2.
-   * Do komunikacji możesz używać **wyłącznie** interfejsów: **I2C, SPI oraz UART**.
-   * Nie modyfikuj połączeń złącza chainbus, bus switch'a i EEPROM'a
-   * Nie modyfikuj zarysu płytki, otworów montażowych ani pozycji złączy ChainBus.
-   * Możesz usunąć złącze XT60, jeśli Twój projekt go nie wymaga.
-
-### Checklista przed zakończeniem projektu
-Przed oznaczeniem projektu jako gotowy i wykonaniem ostatecznego commita, upewnij się, że zrealizowałeś poniższe punkty:
-
-
-- [ ] Poprawiono nazwy, numer rewizji i dane w prawym dolnym rogu schematu i PCB.
-- [ ] Dodano podpis autora/autorów oraz aktualny numer wersji na PCB.
-- [ ] Zaktualizowano readme (usunąć tą sekcje)
-- [ ] Zaktualizowano opis repo żeby opisywał krótko co robi PCB i jakie ma arkusze hierarchiczne do użycia w nowych hat'ach
-- [ ] Usunięto z repozytorium zdjęcia z template'a.
-- [ ] Wygenerowano pliki produkcyjne Gerber
-- [ ] Wygenerowano HTML BOM (z plugin'u)
-- [ ] Dodano zdjęcie hat'a do readme
-- [ ] Zrobiono commit'a i push'a
-
-<!-- DLA AI: Płytka nazywa się HAT. Nie moduł rozszerzeń nie płytka "hat" tylko po prostu hat. Używaj tej nazwy -->
----
-
 ## Sekcja 1: Dokumentacja Hat'a
 
 ### Krótki opis projektu
-[Tutaj wpisz krótki opis, co robi Twój moduł, jakie ma przeznaczenie i kluczowe parametry użytkowe.]
+Hat Air Quality to hat z miejscami na różne czujniki jakości powietrza. Są to 2x BME688 (lub kompatybilne) oraz po jednym PMS5003 (lub kompatybline), SCD40-D-R2, SGP41-D-R4, ENS160-BGLM oraz 4x miejsca na analogowe czujniki DFRobot (np. DFRobot SEN0564).
+
+Dzięki temu potrafi mierzyć temperature, wilgotność, ciśnienie, VOC, IAQ, PM, CO2, NOX oraz wielkości mierzone przez 4x czujniki DFRobot
 
 ### Zgodność ze standardem ChainBus
 
-* ✅ / ❌ Używa złącza ChainBus, nie zmienia jego miejsca ani pinoutu.
-* ✅ / ❌ Używa wyłącznie interfejsów I2C, SPI lub UART i nie inicjuje samodzielnie nowych transmisji (Nie jest master'em I2C albo SPI).
-* ✅ / ❌ Spełnia wymagania mechaniczne standardu (wymiary PCB, rozstaw otworów).
-* ✅ / ❌ Pobiera maksymalny prąd zgodny z ilością na jednego hat'a
-* ✅ / ❌ Obsługuje napięcie wejściowe BRD_VIN do wartości 48V.
-<!-- Usuń odpowiednie emoji. Wszystkie powinny być na zielono. Jeśli z czymś nie jest zgodny to napisz w jaki sposób -->
-<!-- AI: NIE USUWAJ EMOJI. Użytkownik ma to zrobić -->
+* ✅ Używa złącza ChainBus, nie zmienia jego miejsca ani pinoutu.
+* ✅ Używa wyłącznie interfejsów I2C, SPI lub UART i nie inicjuje samodzielnie nowych transmisji (Nie jest master'em I2C albo SPI).
+* ✅ Spełnia wymagania mechaniczne standardu (wymiary PCB, rozstaw otworów).
+* ❌ Pobiera maksymalny prąd zgodny z ilością na jednego hat'a **-> normalna praca >125mA, potrzeba określić empirycznie**
+* ✅ Obsługuje napięcie wejściowe BRD_VIN do wartości 48V.
+
 ### Komunikacja i adresowanie
 
 #### Adresacja I2C
-Poniższa tabela przedstawia adresację urządzeń na magistrali I2C. Wszystkie adresy podane są w formacie 7-bitowym.
 
-| Układ (IC)    | Funkcja                               |  Address   |
-| :------------ | :------------------------------------ | :--------: |
-| **JP3721**    | Sterownik piekarnika                  | `1010000b` |
-| **PCAL9535A** | Ekspander GPIO (Dioda LED, Krańcówki) | `0100000b` |
-| **TMP102**    | Czujnik temperatury                   | `1001000b` |
+| Układ (IC)      | Funkcja                   | Address |
+| :-------------- | :------------------------ | :-----: |
+| **BME688 #1**   | Czujnik jakości powietrza | `0x76`  |
+| **BME688 #2**   | Czujnik jakości powietrza | `0x77`  |
+| **SCD40-D-R2**  | Czujnik jakości powietrza | `0x62`  |
+| **SGP41-D-R4**  | Czujnik jakości powietrza | `0x59`  |
+| **ENS160-BGLM** | Czujnik jakości powietrza | `0x52`  |
+| **ADS1115IDGS** | Przetwornik ADC           | `0x48`  |
 
 #### Magistrala SPI
-Urządzenia SPI podłączone są bezpośrednio do magistrali systemowej bez użycia dodatkowych multiplekserów.
-
-| Układ (IC)  | Funkcja                     | chainbus/multiplexer |
-| :---------- | :-------------------------- | :------------------: |
-| **TMC5160** | Sterownik silnika krokowego |      `chainbus`      |
+Brak urządzeń, ale CS może być użyty do włączania/wyłączania PMS5003
 
 #### Magistrala UART
-Komunikacja szeregowa UART realizowana jest w sposób bezpośredni z układem docelowym.
+UART jest podłączony bezpośrednio do PMS5003.
 
-| Układ (IC)   | Funkcja       | chainbus/multiplexer |
-| :----------- | :------------ | :------------------: |
-| **ESP32-C3** | Adapter WI-FI |      `chainbus`      |
+| Układ (IC)  | Funkcja                   | chainbus/multiplexer |
+| :---------- | :------------------------ | :------------------: |
+| **PMS5003** | Czujnik jakości powietrza |      `chainbus`      |
 
 ### Pinout złączy
 
-| Jn     | Co                                         | Jaki pin co robi                                                     |
-| :----- | :----------------------------------------- | :------------------------------------------------------------------- |
-| **J1** | Zasilanie zewnętrzne silników              | Pin 1: VIN (zasilanie dodatnie)<br>Pin 2: GND (masa zasilania)       |
-| **J2** | Wyjście faz silnika krokowego              | Pin 1: Faza A1<br>Pin 2: Faza A2<br>Pin 3: Faza B1<br>Pin 4: Faza B2 |
-| **J3** | Wejście czujnika krańcowego (Limit Switch) | Pin 1: Sygnał wejściowy (z rezystorem Pull-Up)<br>Pin 2: GND (masa)  |
+| Jn       | Co                | Jaki pin co robi                                                                                                                                                                                                                                                                                                                                                                                          |
+| :------- | :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **J101** | Złącze do PMS5003 | **Pin 1: +5V** <br>**Pin 2: GND**<br>**Pin 3: SET** – Wejście włączenia/uśpienia (Stan wysoki = normalna praca, Stan niski = tryb uśpienia)<br>**Pin 4: RX Czujnika**<br>**Pin 5: TX Czujnika** <br>**Pin 6: RST** – Reset modułu (aktywny stan niski - reset po podaniu GND)<br>**Pin 7: PWM** – Wyjście sygnału PWM, NC <br>**Pin 8: PROTOCOL** – Wybór protokołu/trybu pracy czujnika. Ma pulldown 10k |
 
 ### Konfiguracja układu (Zworki/Rezystory)
 
-| Co             | Jak podłączone | Efekt       |
-| :------------- | :------------- | :---------- |
-| **J1**         | 1-2 zwarte     | Silnik DC   |
-|                | rozwarte       | Silnik BLDC |
-| **J2**         | 1-2 zwarte     | 3.3V out    |
-|                | 2-3 zwarte     | 5V out      |
-| **R1, R2, R3** | Wlutowany R1   | 3.3V out    |
-|                | Wlutowany R2   | 5V out      |
-|                | Wlutowany R3   | VIN out     |
+| Co                   | Jak podłączone        | Efekt                                  |
+| :------------------- | :-------------------- | :------------------------------------- |
+| **R101, R102, R104** | Wlutowany R104        | Pin SET zawsze wysoki                  |
+|                      | Wlutowany  R101, R102 | Pin SET podłączony do pinu CS ChainBus |
 
 
 ### Szczegółowy opis techniczny
-[Tutaj umieść opis działania układu, parametry maksymalne etc]
+Czujniki BME688, SCD40-D-R2, SGP41-D-R4, ENS160-BGLM są bezpośrednio podłączone do magistrali I2C.
+
+Czujniki analogowe DFRobot są podłączone do przetwornika ADC ADS1115IDGS. Kanały przetwornika 0-3 są podłączone do czujników 1-4.
+
+ Czujnik PMS5003 jest bezpośrednio
+podłączony do magistrali UART. Jego pin SEL domyślnie jest podciągany do +3.3V przez rezystor R104 (10k), ale można go wylutować
+i wlutować R101 R102. Wtedy pin SEL jest bezpośrednio podłączony do pinu CS chainbus oraz ściągany (weak pulldown) do 0V przez R101 (10k).
+Jeśli nie potrzebujesz oszczędzać prądu to zalecane jest zostawienie wlutowanego R104.
+
+
 
 ### Gotowe arkusze hierarchiczne
-W projekcie zaprojektowano/użyto następujących arkuszy hierarchicznych:
-* [Nazwa arkusza 1] – [Krótki opis funkcjonalności, np. Zasilacz impulsowy 5V] - [ oryginalny/ wzięty z hata XXX]
-* [Nazwa arkusza 2] – [Krótki opis] - [ -||- ]
+Brak
 
 ---
 

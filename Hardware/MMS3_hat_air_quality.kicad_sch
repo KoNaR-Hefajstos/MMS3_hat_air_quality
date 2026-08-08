@@ -4896,7 +4896,7 @@
 		(uuid "630f1f79-d023-40b8-aa26-0f79ca0db6a8")
 	)
 	(no_connect
-		(at 375.92 210.82)
+		(at 374.65 210.82)
 		(uuid "6b3acf53-6c4a-4b38-86de-9a4907ac51d9")
 	)
 	(bus_entry
@@ -5268,7 +5268,7 @@
 	)
 	(wire
 		(pts
-			(xy 355.6 198.12) (xy 375.92 198.12)
+			(xy 355.6 198.12) (xy 383.54 198.12)
 		)
 		(stroke
 			(width 0)
@@ -5358,7 +5358,7 @@
 	)
 	(wire
 		(pts
-			(xy 337.82 205.74) (xy 375.92 205.74)
+			(xy 337.82 205.74) (xy 383.54 205.74)
 		)
 		(stroke
 			(width 0)
@@ -5575,6 +5575,16 @@
 			(type default)
 		)
 		(uuid "54a6f51b-4425-41e8-9ad5-fe4e38928d38")
+	)
+	(wire
+		(pts
+			(xy 374.65 210.82) (xy 383.54 210.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "54e5e919-5096-43ee-9ea1-34b3281a7b1e")
 	)
 	(wire
 		(pts
@@ -5938,7 +5948,7 @@
 	)
 	(wire
 		(pts
-			(xy 375.92 195.58) (xy 355.6 195.58)
+			(xy 383.54 195.58) (xy 355.6 195.58)
 		)
 		(stroke
 			(width 0)
@@ -6138,7 +6148,7 @@
 	)
 	(wire
 		(pts
-			(xy 312.42 200.66) (xy 375.92 200.66)
+			(xy 312.42 200.66) (xy 383.54 200.66)
 		)
 		(stroke
 			(width 0)
@@ -6208,7 +6218,7 @@
 	)
 	(wire
 		(pts
-			(xy 337.82 203.2) (xy 375.92 203.2)
+			(xy 337.82 203.2) (xy 383.54 203.2)
 		)
 		(stroke
 			(width 0)
@@ -6228,7 +6238,7 @@
 	)
 	(wire
 		(pts
-			(xy 369.57 208.28) (xy 375.92 208.28)
+			(xy 369.57 208.28) (xy 383.54 208.28)
 		)
 		(stroke
 			(width 0)
@@ -6378,7 +6388,7 @@
 	)
 	(wire
 		(pts
-			(xy 369.57 213.36) (xy 375.92 213.36)
+			(xy 369.57 213.36) (xy 383.54 213.36)
 		)
 		(stroke
 			(width 0)
@@ -14447,6 +14457,16 @@
 		)
 		(uuid "65438f76-f1d0-4cb7-b04b-d419ac8f49a1")
 	)
+	(label "~{RST}"
+		(at 377.19 208.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "677ab082-5cd4-4bd2-9468-792b269836f3")
+	)
 	(label "Chainbus.CS"
 		(at 295.91 200.66 180)
 		(effects
@@ -14466,6 +14486,26 @@
 			(justify left bottom)
 		)
 		(uuid "8047e995-5e74-4662-ab71-f8326ec87929")
+	)
+	(label "PROTOCOL"
+		(at 373.38 213.36 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8808db7a-2c82-4796-bfe2-845c0efafef5")
+	)
+	(label "SET"
+		(at 378.46 200.66 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8868d10d-fb2f-46e6-8d29-27a2f65d7342")
 	)
 	(label "Chainbus{I2C}"
 		(at 128.27 78.74 180)
@@ -14498,7 +14538,7 @@
 		(uuid "aed1309e-f076-4313-90ec-1b53c1dd0546")
 	)
 	(label "Chainbus.TX"
-		(at 369.57 203.2 180)
+		(at 377.19 203.2 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14528,7 +14568,7 @@
 		(uuid "be2a3da4-1e76-42a3-a885-add379944c8f")
 	)
 	(label "Chainbus.RX"
-		(at 369.57 205.74 180)
+		(at 377.19 205.74 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14566,6 +14606,16 @@
 			(justify left bottom)
 		)
 		(uuid "e6d5a072-9b59-4a3b-8a87-496b292a395b")
+	)
+	(label "PWM"
+		(at 377.19 210.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e728c567-1363-49e2-920f-7d0a2aebbc38")
 	)
 	(label "Chainbus.SCL"
 		(at 346.71 134.62 0)
@@ -22172,7 +22222,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x08")
-		(at 381 203.2 0)
+		(at 388.62 203.2 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -22183,7 +22233,7 @@
 		(fields_autoplaced yes)
 		(uuid "af772f75-950a-4200-a3d3-0ba2aca461d0")
 		(property "Reference" "J101"
-			(at 383.54 203.1999 0)
+			(at 391.16 203.1999 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -22194,7 +22244,7 @@
 			)
 		)
 		(property "Value" "Conn_01x08"
-			(at 383.54 205.7399 0)
+			(at 391.16 205.7399 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -22205,7 +22255,7 @@
 			)
 		)
 		(property "Footprint" "Connector_JST:JST_XH_S8B-XH-A-1_1x08_P2.50mm_Horizontal"
-			(at 381 203.2 0)
+			(at 388.62 203.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22216,7 +22266,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 381 203.2 0)
+			(at 388.62 203.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22227,7 +22277,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 381 203.2 0)
+			(at 388.62 203.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23096,85 +23146,6 @@
 			(project "MMS3_hat_air_quality"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17"
 					(reference "#PWR0133")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 356.87 208.28 270)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c53ea79e-4d0e-4fad-bde9-7dd55672c36a")
-		(property "Reference" "#PWR0113"
-			(at 350.52 208.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 353.06 208.2799 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 356.87 208.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 356.87 208.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 356.87 208.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "93a890f7-e668-4720-b412-3df2405c526a")
-		)
-		(instances
-			(project "MMS3_hat_air_quality"
-				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17"
-					(reference "#PWR0113")
 					(unit 1)
 				)
 			)
@@ -24874,6 +24845,86 @@
 			(project "MMS3_hat_air_quality"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17"
 					(reference "#PWR0112")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 356.87 208.28 90)
+		(mirror x)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d780b71b-61a6-4883-88e2-eab486eed7a8")
+		(property "Reference" "#PWR0113"
+			(at 360.68 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 353.06 208.2799 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 356.87 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 356.87 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 356.87 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c49e290c-96e0-4730-82e4-546fa71cea16")
+		)
+		(instances
+			(project "MMS3_hat_air_quality"
+				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17"
+					(reference "#PWR0113")
 					(unit 1)
 				)
 			)
